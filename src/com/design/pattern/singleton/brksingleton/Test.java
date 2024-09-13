@@ -1,36 +1,10 @@
-package com.design.pattern.singleton;
+package com.design.pattern.singleton.brksingleton;
+
+import com.design.pattern.singleton.brksingleton.Singleton;
 
 import java.io.*;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-public class Singleton implements Serializable {
-    // This is Lazy of creation of Object..
-    private static Singleton instance=null;
-    // This Approach is Not Thread Safe
-
-    // Constructor from  preventing Object creation
-    private Singleton()
-    {
-        if (instance != null) {
-            throw new RuntimeException();
-        }
-    }
-
-    // Method for Object Creation
-    public static Singleton getInstance()
-    {
-        if (instance == null) {
-            instance=new Singleton();
-        }
-
-        return instance;
-    }
-    public Object readResolve()
-    {
-        return instance;
-    }
-}
 class Test{
     public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, IOException, ClassNotFoundException {
         Singleton singleton=Singleton.getInstance();
